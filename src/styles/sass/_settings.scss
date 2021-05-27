@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500');
+
+/************************  COLOR  ************************/
+$bodyColor:#eff0f4;
+$sidebarColor: skyblue;
+$textColor: black;
+
+/************************  FONTS  ************************/
+$font: 'Roboto', sans-serif;
+$h1Size: 1.7rem;
+$h2Size: 1.3rem;
+$h2Size: 1.1rem;
+
+/************************  SPACING  ************************/
+$spacing1: .2rem;
+$spacing2: .4rem;
+$spacing3: .8rem;
+$spacing4: 1.6rem;
+$spacing4: 2rem;
+
+/************************  MIXINS  ************************/
+@mixin verticalCenter {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+body {
+   font-family: 'Roboto', sans-serif;
+   font-weight: 200;
+   color: $textColor;
+   background-color: $bodyColor;
+}
+
+li {
+   list-style-type: none;
+}
+
+.home, .projects, .competences, .contact, .not_found {
+   display: flex;
+   min-height: 100vh;
+}
+
+.home_content, .projects_content, .comp_content, .contact_content {
+   margin-left: $spacing2;
+   width: 100%;
+   @include verticalCenter();
+   background-color: white;
+}
+
+.not_found_content {
+   width: 100%;
+   @include verticalCenter();
+}

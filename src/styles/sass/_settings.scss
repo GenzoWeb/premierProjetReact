@@ -2,14 +2,16 @@
 
 /************************  COLOR  ************************/
 $bodyColor:#eff0f4;
-$sidebarColor: skyblue;
+$primary: rgb(7, 89, 102);
+$secondary: rgb(29, 161, 242);
+$tertiary: rgba(29, 161, 242, 0.1);
 $textColor: black;
 
 /************************  FONTS  ************************/
 $font: 'Roboto', sans-serif;
 $h1Size: 1.7rem;
 $h2Size: 1.3rem;
-$h2Size: 1.1rem;
+$h3Size: 1.1rem;
 
 /************************  SPACING  ************************/
 $spacing1: .2rem;
@@ -26,7 +28,7 @@ $spacing4: 2rem;
 }
 
 body {
-   font-family: 'Roboto', sans-serif;
+   font-family: $font;
    font-weight: 200;
    color: $textColor;
    background-color: $bodyColor;
@@ -36,19 +38,28 @@ li {
    list-style-type: none;
 }
 
-.home, .projects, .competences, .contact, .not_found {
+.home, .portfolio, .competences, .contact{
    display: flex;
    min-height: 100vh;
+
+   @media screen and (max-width: 1000px){
+      display: block;
+   }
 }
 
-.home_content, .projects_content, .comp_content, .contact_content {
-   margin-left: $spacing2;
+.home_content, .portfolio_content, .comp_content, .contact_content {
    width: 100%;
    @include verticalCenter();
-   background-color: white;
 }
 
-.not_found_content {
-   width: 100%;
-   @include verticalCenter();
+h1 {
+   font-size: $h1Size;
+}
+
+h2 {
+   font-size: $h2Size;
+}
+
+h3 {
+   font-size: $h3Size;
 }

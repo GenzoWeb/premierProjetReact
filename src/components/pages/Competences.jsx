@@ -5,7 +5,7 @@ const Competences = () => {
    return (
       <div className="competences">
          <Sidebar />
-         <div className="_content">
+         <div className="comp_content">
             <p>Mes compétences</p>
          </div>
       </div>

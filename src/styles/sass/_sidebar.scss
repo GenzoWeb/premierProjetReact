@@ -1,7 +1,194 @@
+@import url('https://fonts.googleapis.com/css2?family=Sacramento&display=swap');
+
 .sidebar {
-   background-color: $sidebarColor;
+   min-width: 240px;
+   min-height: 570px;
+   background-color: $primary;
+   border-radius: 0 25px 25px 0;
+   color: white;
+   display: grid;
+   grid-template-columns: 1fr;
+   grid-template-rows: 215px 1fr 110px;
+   grid-template-areas: 
+     "1"
+     "2"
+     "3";
 }
 
-.active {
-   background-color: red;
+.head {
+   grid-area: 1;
+   text-align: center;
+
+   h2 {
+      margin-top: $spacing3;
+      letter-spacing: $spacing1;
+   }
+}
+
+.img_sidebar {
+   border-radius: 50%;
+   margin-top: $spacing3;
+}
+
+.menu {
+   grid-area: 2;
+   padding: 2rem;
+
+   ul {
+      height: 100%;
+      display: grid;
+      text-align: center;
+   }
+
+   li {
+      align-self: center;
+      font-size: 1.2rem;
+   }
+
+   a {
+      padding: 10px;
+      border-radius: 25px;
+   }
+
+   a.active {
+      color: $secondary;
+   }
+
+   a:hover {
+      background-color: $tertiary;
+   }
+}
+
+.icons_sidebar {
+   grid-area: 3;
+   position: relative;
+
+   p {
+      font-family: 'Sacramento';
+      font-size: $h2Size;
+      margin-bottom: 50px;
+      position: absolute;
+      bottom: $spacing3;
+      margin: 0 auto;
+      left: 50%;
+      transform: translateX(-50%);
+   }
+}
+
+.fa_sidebar {
+   display: flex;
+   justify-content: space-evenly;
+
+   i {
+      font-size: 2rem;
+
+      &:hover {
+         color: $secondary;
+      }
+   }
+}
+
+@media screen and (max-width: 1000px) {
+   .sidebar {
+     display: flex;
+     min-height: 50px;
+     border-radius: inherit;
+   }
+
+   .head, .icons_sidebar {
+      display: none;
+   }
+
+   .menu {
+      width: 100%;
+      padding: 1rem;
+      
+      ul {
+         display: flex;
+         justify-content: space-between;
+      }
+   }
+}
+
+@media screen and (max-width: 600px) {
+   .sidebar {
+      width: 100%;
+      justify-content: flex-end;
+      align-items: center;
+      background-color: transparent;
+   }
+
+   .header_burger {
+      @include verticalCenter();
+      width: 35px;
+      height: 35px;
+      position: fixed;
+      top: 0;
+      margin-top: $spacing3;
+      margin-right: $spacing4;
+      background-color: $primary;
+      border-radius: 50%;
+      padding: 0;
+      border: none;
+      cursor: pointer;
+   }
+  
+   .header_icon {
+      content: '';
+      position: relative;
+      width: 15px;
+      height: 2px;
+      background-color: white;
+      display: block;
+      transition: .5s;
+      transition-property: top,bottom,transform;
+
+      &::before, &::after {
+         @extend .header_icon
+      }
+
+      &::before {
+         bottom: -4px;
+      }
+      
+      &::after {
+         top: -6px;
+      }
+   }
+
+   .header_icon_anim {
+      transform: rotate(-135deg);
+      background-color: transparent;
+
+      &::before {
+         bottom: 0;
+         transform: rotate(-90deg);
+      }
+
+      &::after {
+         top: -2px;
+         transform: rotate(0);
+      }
+   }
+
+   .menu {
+      width: 100%;
+      background-color: $primary;
+      margin-top: -242px;
+
+      ul {
+         display: flex;
+         flex-direction: column;
+         height: 160px;
+      }
+   }
+
+   .menu_show {
+      transition: margin-top 1s;
+      margin-top: 0;
+    }
+
+   .home_content, .portfolio_content, .comp_content, .contact_content {
+      padding-top: $spacing3;
+   }
 }

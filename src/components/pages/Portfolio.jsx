@@ -3,9 +3,9 @@ import Sidebar from '../Sidebar';
 
 const Projects = () => {
    return (
-      <div className="projects">
+      <div className="portfolio">
          <Sidebar />
-         <div className="projects_content">
+         <div className="portfolio_content">
             <p>Portfolio</p>
          </div>
       </div>

@@ -22,13 +22,9 @@
 }
 
 .btn {
+   @include button();
    width: 150px;
-   height: 35px;
    background-color: $primary;
-   color: white !important;
-   border-radius: 10px;
-   line-height: 35px;
-   text-align: center;
 
    &:hover {
       background-color: $secondary;
@@ -46,9 +42,8 @@
    text-align: center;
 }
 
-@media screen and (max-width: 1000px) {
+@media #{$medium} {
    .not_found_content {
-      flex-direction: column;
-      align-items: center;
+      @include verticalCenter();
    }
 }

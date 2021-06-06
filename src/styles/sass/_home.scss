@@ -1,0 +1,92 @@
+.home_contain {
+   position: relative;
+   margin-left: $spacing3;
+   background: linear-gradient(115deg, $primary 50%, transparent 100%);
+   min-height: 100vh;
+   width: 100%;
+   border-radius: 25px 0 0 25px;
+   overflow: hidden;
+
+   &:after {
+      content: '';
+      position: absolute;
+      height: 100%;
+      width: inherit;
+      background: url('../../images/image_home.jpg') no-repeat center/cover;
+      z-index: -1;
+      filter: brightness(30%);
+      transform: scaleX(-1);
+   }
+}
+
+.home_content {
+   position: absolute;
+   width: 100%;
+   height: 100%;
+   color: white;
+   display: grid;
+   grid-template-rows: 33% 33% 33%;
+}
+
+.home_top {
+   margin: auto;
+}
+
+.home_mid {
+   @include alignCenter();
+}
+
+.cv {
+   @include button();
+   width: 125px;
+   background-color: $tertiary;
+   box-shadow: 0 5px 1px rgb(15, 15, 15);
+   cursor: pointer;
+
+   &:hover {
+      background-color: $primary;
+   }
+
+   a {
+      color: white;
+      display: block;
+   }
+}
+
+.home_bot {
+   bottom: 0;
+   position: relative;
+   padding-left: 2rem;
+
+   .fa-js-square {
+      position: absolute;
+      bottom: $spacing4;
+      font-size: 2rem;
+      color: #e8d44d;
+   }
+
+   .php {
+      position: absolute;
+      bottom: $spacing4;
+      right: $spacing4;
+      background-color: #7377ad;
+      width: 40px;
+      height: 20px;
+      border-radius: 30px / 15px;
+      display: flex;
+      align-items: center;
+   }
+
+   .fa-php {
+      font-size: 2rem;
+      color: black;
+   }
+}
+
+@media #{$medium} {
+   .home_contain {
+      min-height: calc(100vh - 51px);
+      margin-left: inherit;
+      border-radius: inherit;
+   }
+}

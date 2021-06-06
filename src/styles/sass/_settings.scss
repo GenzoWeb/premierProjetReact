@@ -9,7 +9,7 @@ $textColor: black;
 
 /************************  FONTS  ************************/
 $font: 'Roboto', sans-serif;
-$h1Size: 1.7rem;
+$h1Size: 2.5rem;
 $h2Size: 1.3rem;
 $h3Size: 1.1rem;
 
@@ -21,11 +21,30 @@ $spacing4: 1.6rem;
 $spacing4: 2rem;
 
 /************************  MIXINS  ************************/
-@mixin verticalCenter {
+@mixin alignCenter {
    display: flex;
    justify-content: center;
    align-items: center;
 }
+
+@mixin verticalCenter {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+}
+
+@mixin button {
+   height: 35px;
+   color: white !important;
+   border-radius: 10px;
+   line-height: 35px;
+   text-align: center;
+}
+
+/************************  MEDIA-QUERIES  ************************/
+$medium: "only screen and (max-width: 1000px)";
+$small: "only screen and (max-width: 600px)";
+
 
 body {
    font-family: $font;
@@ -42,14 +61,16 @@ li {
    display: flex;
    min-height: 100vh;
 
-   @media screen and (max-width: 1000px){
+   @media #{$medium} {
       display: block;
    }
 }
 
-.home_content, .portfolio_content, .comp_content, .contact_content {
+.portfolio_content, .comp_content, .contact_content {
    width: 100%;
-   @include verticalCenter();
+   display: flex;
+   flex-direction: column;
+   align-items: center;
 }
 
 h1 {

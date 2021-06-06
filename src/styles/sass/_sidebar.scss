@@ -88,11 +88,12 @@
    }
 }
 
-@media screen and (max-width: 1000px) {
+@media #{$medium} {
    .sidebar {
      display: flex;
      min-height: 50px;
      border-radius: inherit;
+     border-bottom: 1px solid $secondary;
    }
 
    .head, .icons_sidebar {
@@ -101,7 +102,7 @@
 
    .menu {
       width: 100%;
-      padding: 1rem;
+      padding: 0.9rem;
       
       ul {
          display: flex;
@@ -110,27 +111,31 @@
    }
 }
 
-@media screen and (max-width: 600px) {
+@media #{$small} {
    .sidebar {
       width: 100%;
-      justify-content: flex-end;
       align-items: center;
       background-color: transparent;
    }
 
    .header_burger {
-      @include verticalCenter();
+      @include alignCenter();
       width: 35px;
       height: 35px;
       position: fixed;
-      top: 0;
-      margin-top: $spacing3;
-      margin-right: $spacing4;
+      top: 0.5rem;
+      margin-left: $spacing4;
       background-color: $primary;
       border-radius: 50%;
       padding: 0;
       border: none;
       cursor: pointer;
+
+      &:hover {
+         .header_icon {
+            background-color: $secondary;
+         }
+      }
    }
   
    .header_icon {
@@ -174,7 +179,7 @@
    .menu {
       width: 100%;
       background-color: $primary;
-      margin-top: -242px;
+      margin-top: -238px;
 
       ul {
          display: flex;
@@ -186,9 +191,5 @@
    .menu_show {
       transition: margin-top 1s;
       margin-top: 0;
-    }
-
-   .home_content, .portfolio_content, .comp_content, .contact_content {
-      padding-top: $spacing3;
    }
 }

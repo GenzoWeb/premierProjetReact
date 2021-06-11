@@ -1,10 +1,9 @@
 import React from 'react';
-import Sidebar from '../Sidebar';
-import TextWriter from '../TextWriter';
-import DownloadCv from '../DownloadCv';
+import Sidebar from '../navigation/Sidebar';
+import TextWriter from '../home/TextWriter';
+import DownloadCv from '../home/DownloadCv';
 
-
-const Home = () => {
+function Home() {
    return (
       <div className="home">
          <Sidebar />

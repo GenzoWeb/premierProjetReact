@@ -1,7 +1,7 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom';
 
-const NavMenu = ({menuOpen}) => {
+function NavMenu({menuOpen}) {
    let className = 'menu';
    if(menuOpen) {
       className += ' menu_show';

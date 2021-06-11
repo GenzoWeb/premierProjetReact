@@ -122,7 +122,7 @@
       @include alignCenter();
       width: 35px;
       height: 35px;
-      position: fixed;
+      position: absolute;
       top: 0.5rem;
       margin-left: $spacing4;
       background-color: $primary;

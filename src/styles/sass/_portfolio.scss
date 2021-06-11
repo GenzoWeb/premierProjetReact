@@ -1,0 +1,235 @@
+.portfolio {
+   position: relative;
+}
+
+.portfolio_content {
+   margin-top: $spacing3;
+}
+
+.projects {
+   width: 100%;
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: center;
+   max-width: 1200px;
+}
+
+.menu_languages {
+   width: 50%;
+   height: 50px;
+   background-color: $primary;
+   border-radius: 25px;
+   margin-bottom: $spacing3;
+   color: white;
+   display: flex;
+   min-width: 280px;
+
+   ul {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      width: 100%;
+   }
+
+   li {
+      display: flex;
+      position: relative;
+      cursor: pointer;
+   }
+
+   input, label {
+      cursor: pointer;
+   }
+
+   .input_radio {
+      visibility: hidden;
+      position: relative;
+
+      &:before, &:after {
+         content:'';
+         visibility: visible;
+         position: absolute;
+         top: -3px;
+         left: -3px;
+         height: .7rem;
+         width: .7rem;
+         border-radius: 50%;
+         cursor: pointer;
+         border: 2px solid $secondary;
+      }
+
+      &:after {
+         background: $secondary;
+         transform: scale(0);
+      }
+   }
+
+   input:checked:after {
+      transform: scale(1);
+      transition-duration: 0.5s;
+   }
+
+   input:checked + label {
+      color: $secondary;
+   }
+}
+
+.card {
+   width: 20%;
+   margin: 0 10px 20px;
+   border-radius: 15px;
+   display: flex;
+   flex-direction: column;
+   overflow: hidden;
+   background-color: $primary;
+   padding: 0 2px;
+   min-width: 200px;
+
+   img {
+      width: 100%;
+      height: auto;
+   }
+}
+
+.card_title {
+   @include alignCenter();
+   text-align: center;
+   margin: 0 10px;
+   min-height: 60px;
+   color: white;
+}
+
+.card_infos {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 40px;
+   i {
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: white;
+
+      &:hover {
+         color: $secondary;
+      }
+   }
+}
+
+.info {
+   position: absolute;
+   top: 0;
+   right: 0;
+   bottom: 0;
+   left: 0;
+   display: flex;
+   justify-content: center;
+}
+
+.info_content {
+   @include verticalCenter();
+   background-color: rgb(7, 130, 150);
+   color: white;
+   width: 40%;
+   border-radius: 25px;
+   animation: popup .6s ease-in;
+   position: fixed;
+   padding: $spacing4;
+   z-index: 2;
+   margin-top: 127px;
+
+   h2 {
+      margin-bottom: $spacing3;
+   }
+
+   .button_info {
+      @extend .btn;
+      bottom: $spacing4;
+      margin-top: $spacing3;
+   }
+}
+
+.info_react {
+   width: 40%;
+   border-radius: 25px;
+   background-color: rgb(7, 130, 150);
+   overflow: hidden;
+   padding: $spacing4;
+   position: relative;
+}
+
+.info_content_react {
+   @include verticalCenter();
+   color: white;
+   animation: moveUp 1s;
+
+   @keyframes moveUp {
+      0%   {transform: translateY(192px);}
+      100% {transform: translateY(0);}
+   }
+
+   h2 {
+      margin-bottom: $spacing3;
+   }
+}
+
+.links_react {
+   position: relative;
+   @include alignCenter();
+   margin-top: $spacing4;
+}
+
+.git_infos_react {
+   @extend .btn;
+}
+
+@keyframes popup {
+   0%   {transform: scale(0);}
+   100% {transform: scale(1);}
+}
+
+.links_info {
+   position: relative;
+   width: 100%;
+   height: 40px;
+   margin-bottom: $spacing3;
+
+   .git_infos, .source_infos {
+      @extend .btn;
+      position: absolute;
+   }
+
+   .git_infos {
+      right: 0;
+   }
+}
+
+.text_info {
+   width: 100%;
+
+   .description {
+      margin-bottom: $spacing3;
+   }
+}
+
+.opacity_info {
+   position: absolute;
+   width: 100%;
+   height: 100%;
+   background: rgba(0, 0, 0, 0.5);
+   z-index: 1;
+}
+
+@media only screen and (max-width: 800px) {
+   .links_info {
+      @include verticalCenter();
+      height: auto;
+
+      .git_infos, .source_infos {
+         position: relative;
+      }
+
+      .git_infos {
+         margin-bottom: $spacing3;
+      }
+   }
+}

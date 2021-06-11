@@ -3,7 +3,7 @@ import NavMenu from './NavMenu'
 import Burger from './Burger'
 
 
-const Sidebar = () => {
+function Sidebar() {
    const [menuShow, setMenuShow] = useState(false);
    const toggleMenu = () => setMenuShow((s) => !s);
 

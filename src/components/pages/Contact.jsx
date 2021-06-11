@@ -1,7 +1,7 @@
 import React from 'react';
-import Sidebar from '../Sidebar';
+import Sidebar from '../navigation/Sidebar';
 
-const Contact = () => {
+function Contact() {
    return (
       <div className="contact">
          <Sidebar />

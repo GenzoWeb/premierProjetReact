@@ -1,7 +1,7 @@
 import React from 'react';
-import Sidebar from '../Sidebar';
+import Sidebar from '../navigation/Sidebar';
 
-const Competences = () => {
+function Competences() {
    return (
       <div className="competences">
          <Sidebar />

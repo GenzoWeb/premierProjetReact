@@ -1,15 +1,14 @@
 import React from 'react';
-import Sidebar from '../Sidebar';
+import Sidebar from '../navigation/Sidebar';
+import ProjectsList from '../portfolio/ProjectsList';
 
-const Projects = () => {
+function Portfolio() {
    return (
       <div className="portfolio">
          <Sidebar />
-         <div className="portfolio_content">
-            <p>Portfolio</p>
-         </div>
+         <ProjectsList/>
       </div>
    );
 };
 
-export default Projects;
+export default Portfolio;

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Burger = ({menuOpen}) => {
+function Burger({menuOpen}) {
    let className = 'header_icon';
    if(menuOpen) {
       className += ' header_icon_anim';

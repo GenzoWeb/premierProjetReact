@@ -1,0 +1,89 @@
+.comp_content {
+   min-height: 100vh;
+   display: grid;
+   grid-template-columns: 40% 60%;
+
+   h2 {
+      @include alignCenter();
+      margin-bottom: $spacing4;
+      font-weight: 400;
+      font-size: 1.6rem;
+   }
+}
+
+.bloc_comp {
+   align-self: start;
+   padding: $spacing4;
+}
+
+.language {
+   display: flex;
+   justify-content: space-between;
+   margin-bottom: $spacing3;
+}
+
+.title_language {
+   width: 40%;
+   font-weight: 400;
+}
+
+.circle_language {
+   display: flex;
+}
+
+.circle {
+   width: 16px;
+   height: 16px;
+   border-radius: 50%;
+   margin-right: $spacing2;
+   background-color: white;
+}
+
+.circle_plain {
+   background-color: $primary;
+}
+
+.profil_content {
+   @extend .bloc_comp;
+
+   p {
+      margin-bottom: $spacing3;
+   }
+}
+
+.formations_content, .experiences_content {
+   @extend .bloc_comp;
+}
+
+.formation {
+   margin-bottom: $spacing3;
+
+   h3 {
+      margin: $spacing1 0;
+      font-weight: 400;
+   }
+}
+
+.experiences_content {
+   ul {
+      margin: $spacing2 0;
+   }
+}
+
+@media only screen and (max-width: 800px) {
+   .comp_content {
+      grid-template-columns: 1fr;
+   }
+
+   .languages {
+      max-width: 50%;
+      margin: auto;
+   }
+}
+
+@media #{$small} {
+   .languages {
+      max-width: unset;
+      margin: unset;
+   }
+}

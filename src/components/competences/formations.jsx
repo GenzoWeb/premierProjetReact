@@ -1,7 +1,7 @@
 import React from 'react';
 import { formationsData } from '../../data/formationsData';
 
-function formations() {
+function Formations() {
    return (
       <div className="formations_content">
          <h2>Formations</h2>
@@ -16,4 +16,4 @@ function formations() {
    );
 }
 
-export default formations;
+export default Formations;

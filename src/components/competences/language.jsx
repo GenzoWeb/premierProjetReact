@@ -1,6 +1,6 @@
 import React from 'react';
 
-function language(props) {
+function Language(props) {
    let {title, level} = props;
 
    return (
@@ -17,4 +17,4 @@ function language(props) {
    );
 }
 
-export default language;
+export default Language;

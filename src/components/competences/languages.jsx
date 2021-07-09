@@ -1,7 +1,7 @@
 import React from 'react';
-import Language from '../competences/language';
+import Language from './Language';
 
-function languages() {
+function Languages() {
    return (
       <div className="bloc_comp">
          <h2>Compétences</h2>
@@ -17,4 +17,4 @@ function languages() {
    );
 }
 
-export default languages;
+export default Languages;

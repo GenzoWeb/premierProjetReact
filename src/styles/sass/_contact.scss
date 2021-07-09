@@ -1,0 +1,108 @@
+.contact_contain {
+   margin-top: 6rem;
+   min-width: 400px;
+   background-color: $primary;
+   padding: $spacing3;
+   box-shadow: 6px 6px 6px black;
+
+   h2 {
+      margin-bottom: $spacing3;
+      text-align: center;
+      font-size: 1.8rem;
+      color: white;
+      font-weight: 300;
+   }
+}
+
+.form_contact {
+   @include verticalCenter();
+   background-color: #d2d3d8;
+   padding-bottom: $spacing3;
+}
+
+.contact_name, .contact_email, .contact_message {
+   width: 100%;
+   margin: $spacing3 0;
+}
+
+.contact_email {
+   position: relative;
+}
+
+.email_empty {
+   position: absolute;
+   right: 10px;
+   top: -12px;
+   color: rgb(228, 0, 0);
+   display: none;
+}
+
+@keyframes moving {
+   0% {
+     transform: translate(0px, 0px);
+   }
+   10% {
+     transform: translate(-10px, 0px);
+   }
+   20% {
+     transform: translate(10px, 0px);
+   }
+   30% {
+     transform: translate(-10px, 0px);
+   }
+   40% {
+     transform: translate(10px, 0px);
+   }
+   50% {
+     transform: translate(-10px, 0px);
+   }
+   60% {
+     transform: translate(10px, 0px);
+   }
+   70% {
+     transform: translate(-10px, 0px);
+   }
+   80% {
+     transform: translate(10px, 0px);
+   }
+   90% {
+     transform: translate(-10px, 0px);
+   }
+   100% {
+     transform: translate(0px, 0px);
+   }
+}
+
+.form_input, .form_textarea {
+   background: none;
+   width: 100%;
+   font-size: 1.1rem;
+   border-bottom: 1px solid $secondary;
+   padding: $spacing3 0 $spacing3 $spacing3;
+}
+
+.form_input::placeholder, .form_textarea::placeholder {
+   color: $primary;
+}
+
+.form_textarea {
+   height: 200px;
+   resize: none;
+ }
+
+.form_submit {
+   @include button();
+   background-color: $primary;
+   width: 70px;
+}
+
+.form_message {
+   margin-top: $spacing3;
+   border-radius: 5px;
+   padding: 12px;
+   display: none;
+}
+
+.errorForm::placeholder {
+   color: rgb(228, 0, 0);
+}

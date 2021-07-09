@@ -1,9 +1,9 @@
 import React from 'react';
 import Sidebar from '../navigation/Sidebar';
-import Languages from '../competences/languages';
-import Profil from '../competences/profil';
-import Formations from '../competences/formations';
-import Experiences from '../competences/experiences';
+import Languages from '../competences/Languages';
+import Profil from '../competences/Profil';
+import Formations from '../competences/Formations';
+import Experiences from '../competences/Experiences';
 
 function Competences() {
    return (

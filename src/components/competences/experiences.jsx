@@ -1,6 +1,6 @@
 import React from 'react';
 
-function experiences() {
+function Experiences() {
    return (
       <div className="experiences_content">
          <h2>Expériences</h2>
@@ -18,4 +18,4 @@ function experiences() {
    );
 }
 
-export default experiences;
+export default Experiences;

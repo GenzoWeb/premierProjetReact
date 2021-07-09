@@ -1,6 +1,6 @@
 import React from 'react';
 
-function profil() {
+function Profil() {
    return (
       <div className="profil_content">
          <h2>Profil</h2>
@@ -20,4 +20,4 @@ function profil() {
    );
 }
 
-export default profil;
+export default Profil;

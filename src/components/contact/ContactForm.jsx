@@ -5,17 +5,52 @@ function ContactForm() {
    const [name, setName] = useState("");
    const [email, setEmail] = useState("");
    const [message, setMessage] = useState("");
+   const [emailError, setEmailError] = useState("");
+   const [formError, setFormError] = useState("");
+   const [send, setSend] = useState("");
+   const [success, setSuccess] = useState("");
+   const [messageError, setMessageError] = useState("");
+
+   let classNameEmail = 'email_empty';
+   if(emailError) {
+      classNameEmail += ' email_error';
+   }
+
+   let classNameInputEmpty = 'form_message';
+   let classNameInput = "form_input"
+   if(formError) {
+      classNameInputEmpty += ' form_message_error';
+      classNameInput += ' errorForm';
+   }
+   if(success) {
+      classNameInputEmpty += ' form_message_success';
+   }
 
    const handleSubmit = (e) => {
       e.preventDefault();
-      if(validTrim(name) && validEmail() && validTrim(message)) {
+      const testInput = function(){
+         const testInputName = validTrim(name);
+         const testInputEmail = validEmail();
+         const testInputMessage = validTrim(message);
+
+         if(!testInputName || !testInputEmail || !testInputMessage) {
+            setMessageError("Merci de remplir correctement les champs requis *.");
+            setFormError(true);
+            return false;
+         } else {
+            setFormError(false);
+            return true;
+         }
+      }
+
+      if(testInput()) {
          sendFeedback("template_c8agh6h", {
             name,
             email,
             message,
          });
       } else {
-        emptyForm("Merci de remplir correctement les champs requis *.");
+         emptyForm();
       }
    };
 
@@ -23,54 +58,38 @@ function ContactForm() {
       if(formState.trim().length > 0) {
          return true;
       } else {
+         emptyForm();
          return false;
       }
    }
 
    const validEmail = () => {
-      let mail = document.getElementById('email_empty');
       let regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
 
-      if(email.match(regex)) {
-         mail.style.display = "none";
-         return true;
-      } else {
-         mail.style.display = "block";
-         mail.style.animation = "moving 1s";
-         setTimeout(() => {
-            mail.style.animation = "none";
-         }, 1000)
-         return false;
+      if(email.trim().length > 0) {
+         if(email.match(regex)) {
+               setEmailError(false);
+               return true;
+         } else {
+               setEmailError(true);
+               return false;
+         }
       }
    }
 
-   const emptyForm = (errorMessage) => {
-
-      const emptyInput = (inputState, idInput) => {
+   const emptyForm = () => {
+      const emptyInput = (inputState, setInputState) => {
          if(inputState.trim().length === 0) {
-            document.getElementById(idInput).value = "";
+            setInputState("");
          }
       }
-
-      emptyInput(message, 'message')
-      emptyInput(name, 'name')
-
-      let formMessage = document.querySelector('.form_message');
-      formMessage.innerHTML = errorMessage;
-      formMessage.style.display = "block";
-      formMessage.style.background = "rgb(228, 0, 0)";
-      document.getElementById('name').classList.add('errorForm');
-      document.getElementById('email').classList.add('errorForm');
-      document.getElementById('message').classList.add('errorForm');
+      emptyInput(message, setMessage);
+      emptyInput(name, setName);
+      emptyInput(email, setEmail);
    }
 
    const sendFeedback = (templateId, variables) => {
-      let form_submit = document.getElementById('form_submit');
-      form_submit.value="Envoi ...";
-      form_submit.setAttribute('disabled', true);
-      let formMessage = document.querySelector('.form_message');
-      formMessage.style.display = "none";
-      
+      setSend(true);
       emailjs                                     
       .send("service_aux7irc", templateId, variables, "user_wORazGHcAerr8g0OMZANH")
       .then((res) => {
@@ -80,27 +99,18 @@ function ContactForm() {
          setMessage("");
       })
       .catch((err) => {
-         if(form_submit.getAttribute("disabled")){
-            form_submit.removeAttribute('disabled', true);
-         }
-         emptyForm("Une erreur s'est produite, veuillez réessayer.")
+         setSend(false);
+         setMessageError("Une erreur s'est produite, veuillez réessayer.");
+         setFormError(true);
+         emptyForm();
       })
    };
 
    const successForm = () => {
-      let form_submit = document.getElementById('form_submit');
-      form_submit.removeAttribute('disabled', true);
-      let formMessage = document.querySelector('.form_message');
-      formMessage.innerHTML = "Votre message a bien été envoyé";
-      formMessage.style.background = "green";
-      formMessage.style.display = "block";
-      document.getElementById('name').classList.remove('errorForm');
-      document.getElementById('email').classList.remove('errorForm');
-      document.getElementById('message').classList.remove('errorForm');
-      form_submit.style.display = "block";
-      
+      setSend(false);
+      setSuccess(true);
       setTimeout(() => {
-         formMessage.style.display = "none";
+         setSuccess(false);
       }, 3000)
    }
 
@@ -110,7 +120,7 @@ function ContactForm() {
             <input
                type="text"
                id="name"
-               className="form_input"
+               className={classNameInput}
                name="name"
                onChange={(e) => setName(e.target.value)}
                placeholder="nom *"
@@ -119,13 +129,16 @@ function ContactForm() {
             />
          </div>
          <div className="contact_email">
-            <label id="email_empty" className="email_empty">Email non valide</label>
+            <label id="email_empty" className={classNameEmail}>Email non valide</label>
             <input
                type="mail"
                id="email"
-               className="form_input"
+               className={classNameInput}
                name="email"
-               onChange={(e) => setEmail(e.target.value)}
+               onChange={function(e){ 
+                  setEmail(e.target.value)
+                  setEmailError(false)
+               }}
                placeholder="email *"
                value={email}
                autoComplete="off"
@@ -134,7 +147,7 @@ function ContactForm() {
          <div className="contact_message">
             <textarea
                id="message"
-               className="form_textarea"
+               className={classNameInput}
                name="message"
                onChange={(e) => setMessage(e.target.value)}
                placeholder="message *"
@@ -146,11 +159,14 @@ function ContactForm() {
                id="form_submit"
                className="form_submit"
                type="button"
-               value="Envoyer"
+               value={ send ? "Envoi ..." : "Envoyer"}
+               disabled={ send ? true : false}
                onClick={handleSubmit}
             />
          </div>
-         <div className="form_message">Erreur veuillez remplir tout les champs</div>
+         <div className={classNameInputEmpty}>
+            { success ? "Votre message a bien été envoyé." : messageError}
+         </div>
       </form>
    );
 }

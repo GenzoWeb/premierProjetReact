@@ -123,3 +123,9 @@
 .errorForm::placeholder {
    color: $errorForm;
 }
+
+@media #{$small} {
+   .contact_contain {
+      min-width: 80%;
+   }
+}

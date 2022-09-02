@@ -1,5 +1,6 @@
 .contact_contain {
    margin-top: 6rem;
+   margin-left: 260px;
    min-width: 400px;
    background-color: $primary;
    padding: $spacing3;
@@ -122,6 +123,12 @@
 
 .errorForm::placeholder {
    color: $errorForm;
+}
+
+@media #{$medium} {
+   .contact_contain {
+      margin-left: inherit;
+   }
 }
 
 @media #{$small} {

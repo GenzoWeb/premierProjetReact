@@ -3,6 +3,7 @@
 }
 
 .portfolio_content {
+   margin-left: 260px;
    margin-top: $spacing3;
 }
 
@@ -217,6 +218,12 @@
    height: 100%;
    background: rgba(0, 0, 0, 0.5);
    z-index: 1;
+}
+
+@media #{$medium} {
+   .portfolio_content {
+      margin-left: inherit;
+   }
 }
 
 @media only screen and (max-width: 800px) {

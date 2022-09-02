@@ -1,5 +1,6 @@
 .comp_content {
    min-height: 100vh;
+   margin-left: 260px;
    display: grid;
    grid-template-columns: 40% 60%;
 
@@ -67,6 +68,12 @@
 .experiences_content {
    ul {
       margin: $spacing2 0;
+   }
+}
+
+@media #{$medium} {
+   .comp_content {
+      margin-left: inherit;
    }
 }
 
